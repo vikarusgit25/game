@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://t3yhb8dsrlcd"]
+
+[ext_resource type="Script" uid="uid://bvivy0y4n3drf" path="res://Scenes/pause_ui.gd" id="1_cf5hy"]
+[ext_resource type="Texture2D" uid="uid://66ugumtf8jge" path="res://Assets/button_resume.png" id="2_w3mym"]
+[ext_resource type="Texture2D" uid="uid://bsfyun27dp4ip" path="res://Assets/button_menu.png" id="3_36amk"]
+[ext_resource type="AudioStream" uid="uid://dqd3fo3y0gh7t" path="res://Assets/Sounds/button_click.wav" id="3_w3mym"]
+[ext_resource type="Texture2D" uid="uid://dapqrqsrg1p4" path="res://Assets/button_pause.png" id="4_knkv6"]
+
+[node name="PauseUI" type="CanvasLayer" unique_id=1899404654]
+process_mode = 3
+layer = 100
+script = ExtResource("1_cf5hy")
+
+[node name="PauseOverlay" type="ColorRect" parent="." unique_id=1806713185]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.6862745)
+
+[node name="MenuButton" type="Button" parent="." unique_id=1502640220]
+offset_left = 110.0
+offset_top = 256.0
+offset_right = 187.0
+offset_bottom = 288.0
+icon = ExtResource("3_36amk")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MenuButton" unique_id=1939250589]
+stream = ExtResource("3_w3mym")
+volume_db = -6.0
+
+[node name="ResumeButton" type="Button" parent="." unique_id=1162553911]
+offset_left = 132.0
+offset_top = 216.0
+offset_right = 164.0
+offset_bottom = 250.0
+icon = ExtResource("2_w3mym")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ResumeButton" unique_id=312482190]
+stream = ExtResource("3_w3mym")
+volume_db = -6.0
+
+[node name="PauseButton" type="Button" parent="." unique_id=849293419]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 42.0
+offset_bottom = 44.0
+icon = ExtResource("4_knkv6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PauseButton" unique_id=2091611333]
+stream = ExtResource("3_w3mym")
+volume_db = -6.0

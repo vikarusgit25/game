@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://btv1mw3lj3xtt"]
+
+[ext_resource type="Script" uid="uid://d3wlc10555bo7" path="res://Scenes/sound_button_ui.gd" id="1_t7pna"]
+[ext_resource type="Texture2D" uid="uid://dpljs2lj0fr0x" path="res://Assets/sound_on.png" id="2_ebxpa"]
+[ext_resource type="Texture2D" uid="uid://kpu0055tgduv" path="res://Assets/sound_off.png" id="3_rvkjg"]
+
+[node name="SoundButtonUI" type="CanvasLayer" unique_id=576958414]
+script = ExtResource("1_t7pna")
+
+[node name="SoundButton" type="TextureButton" parent="." unique_id=1936135233]
+offset_left = 246.0
+offset_top = 10.0
+offset_right = 278.0
+offset_bottom = 42.0
+texture_normal = ExtResource("2_ebxpa")
+texture_pressed = ExtResource("3_rvkjg")

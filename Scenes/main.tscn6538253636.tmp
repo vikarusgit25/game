@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cc67pgysj6sdb"]
+
+[ext_resource type="Texture2D" uid="uid://cavwxhdxkwtjj" path="res://Assets/background.jpg" id="1_8gbba"]
+[ext_resource type="PackedScene" uid="uid://dn7pl01e6m3jp" path="res://Scenes/dragon.tscn" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://b2ke32rcq0q7u" path="res://Scenes/game_manager.gd" id="1_kry3j"]
+[ext_resource type="PackedScene" uid="uid://byuqlu6x1itnv" path="res://Scenes/ground.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://c8ua3wc2bdapx" path="res://Scenes/pipe_spawner.tscn" id="4_jjvhh"]
+
+[node name="main" type="Node" unique_id=301846889]
+
+[node name="GameManager" type="Node" parent="." unique_id=1840130831]
+script = ExtResource("1_kry3j")
+
+[node name="background" type="Sprite2D" parent="." unique_id=1235153318]
+position = Vector2(0, -1)
+scale = Vector2(1, 0.99479175)
+texture = ExtResource("1_8gbba")
+
+[node name="Dragon" parent="." unique_id=560785982 instance=ExtResource("1_jjgbg")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=541878712]
+
+[node name="ground" parent="." unique_id=1150819036 instance=ExtResource("3_8gbba")]
+position = Vector2(24, 200)
+
+[node name="PipeSpawner" parent="." unique_id=164434878 instance=ExtResource("4_jjvhh")]

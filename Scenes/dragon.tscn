@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://dn7pl01e6m3jp"]
+
+[ext_resource type="Texture2D" uid="uid://da0gg146g2wqp" path="res://Assets/first-dragon.png" id="1_jb4vs"]
+[ext_resource type="Script" uid="uid://cj6kdm16ohwhj" path="res://Scenes/dragon.gd" id="1_mtyor"]
+[ext_resource type="Texture2D" uid="uid://bh5hghnqbe6ln" path="res://Assets/second-dragon.png" id="3_gfnx5"]
+[ext_resource type="Texture2D" uid="uid://dpivfxpuctq7k" path="res://Assets/third-dragon.png" id="4_5gcdv"]
+[ext_resource type="AudioStream" uid="uid://dteucapmtp8k5" path="res://Assets/Sounds/sfx_wing.wav" id="5_5gcdv"]
+[ext_resource type="AudioStream" uid="uid://b4ijofsminlbi" path="res://Assets/Sounds/sfx_hit.wav" id="6_y84ol"]
+[ext_resource type="AudioStream" uid="uid://b3e5becvsfsyt" path="res://Assets/Sounds/sfx_point.wav" id="7_23tg5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mtyor"]
+height = 23.636362
+
+[sub_resource type="Animation" id="Animation_mtyor"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_jb4vs")]
+}
+
+[sub_resource type="Animation" id="Animation_y84ol"]
+resource_name = "flap_wings"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_jb4vs"), ExtResource("3_gfnx5"), ExtResource("4_5gcdv")]
+}
+
+[sub_resource type="Animation" id="Animation_d8ryr"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gfnx5"]
+_data = {
+&"RESET": SubResource("Animation_mtyor"),
+&"flap_wings": SubResource("Animation_y84ol"),
+&"idle": SubResource("Animation_d8ryr")
+}
+
+[node name="Dragon" type="CharacterBody2D" unique_id=560785982]
+script = ExtResource("1_mtyor")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1519240715]
+texture_filter = 1
+texture = ExtResource("1_jb4vs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=489311911]
+position = Vector2(1, 0)
+rotation = 1.5707964
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CapsuleShape2D_mtyor")
+debug_color = Color(0.6249058, 0.3822125, 0.93792456, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1229449094]
+libraries/ = SubResource("AnimationLibrary_gfnx5")
+
+[node name="FlapSound" type="AudioStreamPlayer2D" parent="." unique_id=1762280715]
+stream = ExtResource("5_5gcdv")
+volume_db = -10.0
+
+[node name="CrashSound" type="AudioStreamPlayer2D" parent="." unique_id=2094928753]
+stream = ExtResource("6_y84ol")
+volume_db = -5.0
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="." unique_id=875887013]
+stream = ExtResource("7_23tg5")
+volume_db = -5.0
